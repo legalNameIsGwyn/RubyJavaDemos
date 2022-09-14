@@ -11,12 +11,15 @@ else
     puts "You are neither a student nor smart"
 end
 
+if is_student or is_smart
+    puts "You are either smart or a student"
+end
 
 # >, <, >=, <=, !=, ==
-if 1 < 3
-    puts "the number comparison is true"
-end
+# if 1 < 3
+#     puts "the number comparison is true"
+# end
 
-if "abcdefg" > "ab"
-    puts "the string comparison is true"
-end
+# if "a" < "b"
+#     puts "the string comparison is true"
+# end
