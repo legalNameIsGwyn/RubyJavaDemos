@@ -31,9 +31,13 @@ class Fraction # CamelCaseNamingConvention
     # attr_writer :numer, :denom # setters
     # attr_accessor :numer, :denom
 
-    # def initialize(numer=nil, denom=nil)
+    # def initialize(numer=0, denom=0)
     #     @numerator = numer
     #     @denominator = denom
+    # end
+
+    # def print_value
+    #     puts "#{@numerator}/#{@denominator}"
     # end
 end
 
