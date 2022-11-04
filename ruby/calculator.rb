@@ -2,57 +2,60 @@ def getNumbers(workingArray)
 # Method to take multiple integers as input from user.
 puts "Please enter the numbers you'd like me to use. Type 'done' when you're finished."
 nextnum = 0
-# Creates nextnum as variable.
-while nextnum != "done"
-	nextnum = gets.chomp!
-	if nextnum == "done"
-		puts "Calculating!"
-	elsif nextnum != "0" && nextnum.to_i == 0
-		# Checks for non-numerical characters.
-		puts "That's not a number."
-		nextnum = "done"
-		# Breaks out of while loop if non-numerical character entered.
-	else
-		workingArray << nextnum.to_i
-		# Stores each input as next value in workingArray.
+	# Creates nextnum as variable.
+	while nextnum != "done"
+		nextnum = gets.chomp!
+		if nextnum == "done"
+			puts "Calculating!"
+		elsif nextnum != "0" && nextnum.to_i == 0
+			# Checks for non-numerical characters.
+			puts "That's not a number."
+			nextnum = "done"
+			# Breaks out of while loop if non-numerical character entered.
+		else
+			workingArray << nextnum.to_i
+			# Stores each input as next value in workingArray.
+		end
 	end
 end
+
+class Operators
+	def add(workingArray)
+		# Defines method for addition.
+		sum = 0
+		# Creates variable sum.
+		workingArray.each {|num| sum += num}
+		# Sum increases by value of each item in array.
+		puts "Your sum is #{sum}"
+	end
+
+	def subtract(workingArray)
+		# Defines method for subtraction.
+		dif = 0 + workingArray[0] + workingArray[0]
+		# There are two of these to counteract the next step subtracting the first value.
+		workingArray.each {|num| dif -= num}
+		# Dif decreases by each item in array.
+		puts "Your difference is #{dif}"
+	end
+
+	def multiply(workingArray)
+		prod = 1
+		# Begins variable prod at 1.
+		workingArray.each {|num| prod *= num}
+		# Prod multiplies by value of each item in array.
+		puts "Your product is #{prod}"
+	end
+
+	def divide(workingArray)
+		quot = 1 * workingArray[0] * workingArray[0]
+		# Multiplies first val two times by first item in array...
+		# to counteract first division by first val in array.
+		workingArray.each {|num| quot /= num }
+		# Quot divides by value of each item in array.
+		puts "Your quotient is #{quot}"
+	end
 end
 
-def add(workingArray)
-	# Defines method for addition.
-	sum = 0
-	# Creates variable sum.
-	workingArray.each {|num| sum += num}
-	# Sum increases by value of each item in array.
-	puts "Your sum is #{sum}"
-end
-
-def subtract(workingArray)
-	# Defines method for subtraction.
-	dif = 0 + workingArray[0] + workingArray[0]
-	# There are two of these to counteract the next step subtracting the first value.
-	workingArray.each {|num| dif -= num}
-	# Dif decreases by each item in array.
-	puts "Your difference is #{dif}"
-end
-
-def multiply(workingArray)
-	prod = 1
-	# Begins variable prod at 1.
-	workingArray.each {|num| prod *= num}
-	# Prod multiplies by value of each item in array.
-	puts "Your product is #{prod}"
-end
-
-def divide(workingArray)
-	quot = 1 * workingArray[0] * workingArray[0]
-	# Multiplies first val two times by first item in array...
-	# to counteract first division by first val in array.
-	workingArray.each {|num| quot /= num }
-	# Quot divides by value of each item in array.
-	puts "Your quotient is #{quot}"
-end
 
 # Running program begins here.
 puts "Welcome to Calculator."
@@ -102,8 +105,8 @@ when "exponent"
 		power = power.to_i
 		exp = starting_num ** power
 		puts "Your exponent is #{exp}"
-	end
-	end
+  end
+  end
 
 when "square root"
 	puts "Please enter the number you'd like to find the square root of."
@@ -120,22 +123,22 @@ when "square root"
 when "add"
 	getNumbers(workingArray)
 	# Calls getNumbers function
-	add(workingArray)
+  Operators.new.add(workingArray)
 
 when "subtract"
 	getNumbers(workingArray)
 	# Calls getNumbers function
-	subtract(workingArray)
+	Operators.new.subtract(workingArray)
 
 when "multiply"
 	getNumbers(workingArray)
 	# Calls getNumbers function
-	multiply(workingArray)
+	Operators.new.multiply(workingArray)
 
 when "divide"
 	getNumbers(workingArray)
 	# Calls getNumbers function
-	divide(workingArray)
+	Operators.new.divide(workingArray)
 
 else
 	puts "That's not an option."
