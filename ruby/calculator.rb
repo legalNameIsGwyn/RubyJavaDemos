@@ -125,3 +125,4 @@ class Calculator
 
 	end
 end
+#end of calculator
