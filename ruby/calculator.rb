@@ -1,5 +1,8 @@
 class Calculator
 	require_relative 'Operators'
+	require 'logger'
+	logger = Logger.new('rubylogs.txt')
+	
 	def getNumbers(workingArray)
 		# Method to take multiple integers as input from user.
 		puts "Please enter the numbers you'd like me to use. Type 'done' when you're finished."
@@ -11,6 +14,7 @@ class Calculator
 				puts "Calculating!"
 			elsif nextnum != "0" && nextnum.to_i == 0
 				# Checks for non-numerical characters.
+				logger.add(Logger::ERROR, 'Non-fatal error')
 				puts "That's not a number."
 				nextnum = "done"
 				# Breaks out of while loop if non-numerical character entered.
@@ -32,6 +36,7 @@ class Calculator
 	end
 	if firstIn != "n" && firstIn != "y"
 		# If user types anything but "y" or "n", end program here.
+		logger.add(Logger::FATAL, 'Fatal error')
 		puts "I don't get it. Shutting down."
 	end
 
@@ -55,6 +60,7 @@ class Calculator
 
 			if starting_num != "0" && starting_num.to_i == 0
 				# Checks for non-numerical characters.
+				logger.add(Logger::ERROR, 'Non-fatal error')
 				puts "Hey, that's not a number."
 			else
 				starting_num = starting_num.to_i
@@ -63,6 +69,7 @@ class Calculator
 				# Gets power to raise starting_num to.
 				power = gets.chomp!
 				if power != "0" && power.to_i == 0
+					logger.add(Logger::ERROR, 'Non-fatal error')
 					puts "Hey, that's not a number."
 				else
 					power = power.to_i
@@ -75,6 +82,7 @@ class Calculator
 			puts "Please enter the number you'd like to find the square root of."
 			to_square = gets.chomp!
 			if to_square != "0" && to_square.to_i == 0
+				logger.add(Logger::ERROR, 'Non-fatal error')
 				puts "Hey, that's not a number."
 			else
 				to_square = to_square.to_i
@@ -104,6 +112,7 @@ class Calculator
 			Operators.new.divide(workingArray)
 
 		else
+			logger.add(Logger::ERROR, 'Non-fatal error')
 			puts "That's not an option."
 		end
 
@@ -120,6 +129,7 @@ class Calculator
 
 		if firstIn != "n" && firstIn != "y"
 			# Ends program.
+			logger.add(Logger::FATAL, 'Fatal error')
 			puts "I don't get it. Shutting down."
 		end
 
